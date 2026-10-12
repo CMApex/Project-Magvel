@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Texture2D" uid="uid://dn3dnoiknl8qw" path="res://rom_local/fe8_ch1_map.png" id="1_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox6yj"]
+albedo_texture = ExtResource("1_ig7tw")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ds2yh"]
+material = SubResource("StandardMaterial3D_ox6yj")
+size = Vector2(15, 10)
+
+[node name="Main" type="Node3D" unique_id=1057701800]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2074814982]
+mesh = SubResource("PlaneMesh_ds2yh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1552091007]
+transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 24.699215, 17.654896)
+fov = 16.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=767236740]
+transform = Transform3D(1, 0, 0, 0, -0.8660254, 0.50000006, 0, -0.50000006, -0.8660254, 0, 0, 0)
+shadow_enabled = true
