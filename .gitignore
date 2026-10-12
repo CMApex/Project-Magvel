@@ -1,4 +1,14 @@
-# Godot 4+ specific ignores
+# Godot
 .godot/
-/android/
-/rom_local/
+godot/android/
+godot/bin/*
+!godot/bin/*.gdextension
+
+# Rust
+rust/target/
+
+# Blender Backups
+*.blend1
+
+# ROM-Derived: never commit
+rom_local/
