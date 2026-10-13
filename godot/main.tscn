@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dn3dnoiknl8qw" path="res://rom_local/fe8_ch1_map.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dvckl2wcgkoe5" path="res://scripts/cursor.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://tdk6pgbtiq0w" path="res://scripts/camera_rig.gd" id="2_h2yge"]
+[ext_resource type="Shader" uid="uid://c7fwdowa05k8x" path="res://shaders/cursor.gdshader" id="3_1bvp3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox6yj"]
 albedo_texture = ExtResource("1_ig7tw")
@@ -13,12 +14,18 @@ material = SubResource("StandardMaterial3D_ox6yj")
 size = Vector2(15, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5538x"]
+lightmap_size_hint = Vector2i(6, 6)
 size = Vector2(0.9, 0.9)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmiu2"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 1, 0.8901961, 0.654902)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+render_priority = 0
+shader = ExtResource("3_1bvp3")
+shader_parameter/color = Color(1, 1, 0.4, 0.8)
+shader_parameter/pixels = 20.0
+shader_parameter/thickness = 2.0
+shader_parameter/arm_length = 6.0
+shader_parameter/pulse_amount = 0.06
+shader_parameter/pulse_speed = 6.0
 
 [node name="Main" type="Node3D" unique_id=1057701800]
 
@@ -41,5 +48,5 @@ fov = 16.0
 [node name="Cursor" type="MeshInstance3D" parent="." unique_id=279130626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("PlaneMesh_5538x")
-surface_material_override/0 = SubResource("StandardMaterial3D_wmiu2")
+surface_material_override/0 = SubResource("ShaderMaterial_h2yge")
 script = ExtResource("2_0xm2m")
