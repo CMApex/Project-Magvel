@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dn3dnoiknl8qw" path="res://rom_local/fe8_ch1_map.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dvckl2wcgkoe5" path="res://scripts/cursor.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://tdk6pgbtiq0w" path="res://scripts/camera_rig.gd" id="2_h2yge"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox6yj"]
 albedo_texture = ExtResource("1_ig7tw")
@@ -28,8 +29,10 @@ mesh = SubResource("PlaneMesh_ds2yh")
 transform = Transform3D(1, 0, 0, 0, -0.8660254, 0.50000006, 0, -0.50000006, -0.8660254, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CameraRig" type="Node3D" parent="." unique_id=409088631]
+[node name="CameraRig" type="Node3D" parent="." unique_id=409088631 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.66913056, 0.74314487, 0, -0.74314487, 0.66913056, 0, 0, 0)
+script = ExtResource("2_h2yge")
+target = NodePath("../Cursor")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=1552091007]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
