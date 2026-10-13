@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Texture2D" uid="uid://dn3dnoiknl8qw" path="res://rom_local/fe8_ch1_map.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dvckl2wcgkoe5" path="res://scripts/cursor.gd" id="2_0xm2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox6yj"]
 albedo_texture = ExtResource("1_ig7tw")
@@ -10,15 +11,32 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_ox6yj")
 size = Vector2(15, 10)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_5538x"]
+size = Vector2(0.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmiu2"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0.8901961, 0.654902)
+
 [node name="Main" type="Node3D" unique_id=1057701800]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2074814982]
 mesh = SubResource("PlaneMesh_ds2yh")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1552091007]
-transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 24.699215, 17.654896)
-fov = 16.0
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=767236740]
 transform = Transform3D(1, 0, 0, 0, -0.8660254, 0.50000006, 0, -0.50000006, -0.8660254, 0, 0, 0)
 shadow_enabled = true
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=409088631]
+transform = Transform3D(1, 0, 0, 0, 0.66913056, 0.74314487, 0, -0.74314487, 0.66913056, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=1552091007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+fov = 16.0
+
+[node name="Cursor" type="MeshInstance3D" parent="." unique_id=279130626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("PlaneMesh_5538x")
+surface_material_override/0 = SubResource("StandardMaterial3D_wmiu2")
+script = ExtResource("2_0xm2m")
